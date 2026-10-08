@@ -172,12 +172,12 @@ jobs:
               }
             })
           result-encoding: string
-      - name: Trigger Release
-        if: env.VERSION != '' && steps.check-release.outputs.result == 'undefined'
-        env:
-          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          IFS=$'\n\t'
-          gh release create --generate-notes "v${VERSION}" --title "${VERSION}"
+      # - name: Trigger Release
+      #   if: env.VERSION != '' && steps.check-release.outputs.result == 'undefined'
+      #   env:
+      #     GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+      #   shell: bash
+      #   run: |
+      #     set -euo pipefail
+      #     IFS=$'\n\t'
+      #     gh release create --generate-notes "v${VERSION}" --title "${VERSION}"
