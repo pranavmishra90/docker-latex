@@ -1,4 +1,4 @@
-FROM node:24-bookworm-slim
+FROM node:26.10.0-trixie
 
 HEALTHCHECK NONE
 
