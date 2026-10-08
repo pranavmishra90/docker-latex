@@ -102,12 +102,11 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/* /var/log/* /var/cache/ldconfig/aux-cache
 
-RUN adduser \
-  --home "${USER_HOME}" \
-  --uid "${USER_ID}" \
-  --gecos "${USER_GECOS}" \
-  --disabled-password \
-  "${USER_NAME}"
+RUN usermod --login "${USER_NAME}" \
+    --home "${USER_HOME}" \
+    --move-home \
+    node \
+    && groupmod --new-name "${USER_NAME}" node
 
 USER "${USER_NAME}"
 
